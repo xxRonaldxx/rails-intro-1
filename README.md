@@ -1,6 +1,8 @@
-rails-intro-1
+rails-intro-1 
 ---------
 BerkeleyX/CS_CS169.1x/1T2014/courseware on edx.org
+
+http://thawing-reef-5791.herokuapp.com/movies
 
 
 
