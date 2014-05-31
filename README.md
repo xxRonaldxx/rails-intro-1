@@ -1,5 +1,10 @@
-HW2: RAILS INTRO - ADD FEATURES TO ROTTENPOTATOES
+rails-intro-1
+BerkeleyX/CS_CS169.1x/1T2014/courseware on edx.org
 ---------
+
+
+HW2: RAILS INTRO - ADD FEATURES TO ROTTENPOTATOES
+
 
 In this homework you will add a feature to an existing simple Rails app and deploy the result publicly on the Heroku cloud hosting service. We will run live integration tests against your deployed version.
 
