@@ -1,6 +1,7 @@
 rails-intro-1
-BerkeleyX/CS_CS169.1x/1T2014/courseware on edx.org
 ---------
+BerkeleyX/CS_CS169.1x/1T2014/courseware on edx.org
+
 
 
 HW2: RAILS INTRO - ADD FEATURES TO ROTTENPOTATOES
