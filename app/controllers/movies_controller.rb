@@ -9,10 +9,14 @@ class MoviesController < ApplicationController
   def index
 	
     # in the case incoming URI is lacking the right params[] need to fill them from session[]
+    if session[:sort] != params[:sort] || session[:ratings] != params[:ratings] 
       params[:sort] ||= session[:sort]
       session[:sort] = params[:sort]
       params[:ratings] ||= session[:ratings]
       session[:ratings] = params[:ratings]
+      flash.keep
+      redirect_to movies_path(params)
+    end
 
 	# create an array of all ratings using a class method defined in movie.rb
     @all_ratings = Movie.rating_list
