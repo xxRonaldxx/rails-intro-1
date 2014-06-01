@@ -7,6 +7,13 @@ class MoviesController < ApplicationController
   end
 
   def index
+	
+    # in the case incoming URI is lacking the right params[] need to fill them from session[]
+      params[:sort] ||= session[:sort]
+      session[:sort] = params[:sort]
+      params[:ratings] ||= session[:ratings]
+      session[:ratings] = params[:ratings]
+
 	# create an array of all ratings using a class method defined in movie.rb
     @all_ratings = Movie.rating_list
     
@@ -16,7 +23,7 @@ class MoviesController < ApplicationController
       # create a hash with all keys being false  
       @check = Hash[Movie.rating_list.collect {|r| [r,false]}]
       # then merge with the passed params, changing the checked ones ("1") to true
-      # @check = @check.merge!(params[:ratings].each_key {|k|  params[:ratings][k] = true})
+      #@check = @check.merge!(params[:ratings].each_key {|k|  params[:ratings][k] = true})
       # note: able to shorten the above by changing the views check_box_tag default from 1 to true
       @check = @check.merge!(params[:ratings])
     else
@@ -25,14 +32,14 @@ class MoviesController < ApplicationController
     end
 
     # gets all the movies from the database
-    @movies = Movie.all
+    @movies = Movie.scoped
 
     # restrict the query based on the rating boxes the user has checked
-    @movies = Movie.where(:rating => params[:ratings].keys) if params[:ratings]
+    @movies = @movies.where(:rating => params[:ratings].keys) if params[:ratings]
 
     # handle the events when the title and release dates need sorted
     if params['sort']
-      @movies = Movie.order(params['sort'])
+      @movies = @movies.order(params['sort'])
       instance_variable_set("@" + params['sort'], 'hilite')
     end
   end
