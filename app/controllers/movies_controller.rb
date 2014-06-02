@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     
     # Checkbox code - used in view file: index.html.haml
     #  When ratings params are passed (some boxes are unchecked)         
-    @check = Hash[Movie.rating_list.collect {|r| [r,true]}]
+    @check = Hash[Movie.rating_list.collect {|r| [r,true]}] unless params[:ratings]
     @check = (params[:ratings]) if params[:ratings]
 
     # restrict the query based on the rating boxes the user has checked
